@@ -1,0 +1,15 @@
+{
+  "name": "lyxlib",
+  "version": "0.0.1",
+  "description": "Lytrax commons library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "Christos Lytras",
+    "email": "christos.lytras@gmail.com",
+    "url": "https://lytrax.io"
+  },
+  "license": "MIT"
+}
