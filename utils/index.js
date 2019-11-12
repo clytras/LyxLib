@@ -31,3 +31,11 @@ export const toFormData = (obj, form, namespace) => {
 
   return fd;
 }
+
+export const fetchTimeout = (url, options, timeout = 30000) => 
+  Promise.race([
+    fetch(url, options),
+    new Promise((_, reject) =>
+      setTimeout(() => reject(new Error('timeout')), timeout)
+    )
+  ]);

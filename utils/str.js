@@ -47,11 +47,11 @@ export const removeAccent = (text, overrides = {}) => {
 
 export const camelize = (str, lowerFirstChar = false) => {
   return str
-  .replace(/[_-]/g, ' ')
-  .replace(/(?:^\w|[A-Z]|\b\w)/g, (letter, index) => {
-    return lowerFirstChar && index == 0 ? letter.toLowerCase() : letter.toUpperCase();
-  })
-  .replace(/\s+/g, '');
+    .replace(/[_-]/g, ' ')
+    .replace(/(?:^\w|[A-Z]|\b\w)/g, (letter, index) => {
+      return lowerFirstChar && index == 0 ? letter.toLowerCase() : letter.toUpperCase();
+    })
+    .replace(/\s+/g, '');
 }
 
 export const toTitleCase = (str, splitWith = /[\s]+/, joinWith = ' ') => {
@@ -82,3 +82,17 @@ export const decodeHtmlCharCodes = str =>
     String.fromCharCode(charCode));
 
 export const toJsonIntended = (obj, spaces = 2) => JSON.stringify(obj, null, spaces);
+
+export const format = (text, ...params) =>  {
+  var formatted = text;
+  
+  if(params.length == 1 && typeof params[0] == 'object')
+    args = params[0];
+  else
+    args = params;
+
+  for(let key in args)
+    formatted = formatted.replace(new RegExp('\\{' + key + '\\}', 'gi'), args[key]);
+
+  return formatted;
+}
