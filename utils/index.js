@@ -39,3 +39,15 @@ export const fetchTimeout = (url, options, timeout = 30000) =>
       setTimeout(() => reject(new Error('timeout')), timeout)
     )
   ]);
+
+export function disableConsole(condition, functions = [
+  'log', 'debug', 'error', 'warn', 'clear', 'dir', 'table', 'trace', 'time'
+]) {
+  if(condition) {
+    for(let fn of functions) {
+      if(console[fn]) {
+        console[fn] = () => {}
+      }
+    }
+  }
+}
