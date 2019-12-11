@@ -75,6 +75,8 @@ export const makeLines = ({
   glue = "\n"
 } = {}) => lines.filter(l => l || l === '').join(glue);
 
+export const nl2br = (str, is_xhtml = true) => str.replace(/\n/g, is_xhtml ? '<br/>' : '<br>');
+
 export const removeAllWhitespaces = (text, whitespaces = /[ \t\r]+/g) => text.replace(whitespaces, '');
 
 export const decodeHtmlCharCodes = str =>
