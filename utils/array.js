@@ -24,3 +24,8 @@ export const arraySortForLocale = (arr, prop, locale, asc, untone = false) => {
       return bv.localeCompare(av, ['en', 'el'], {sensitivity: 'base'});
   });
 }
+
+export const arrayEquals = (left, right) => {
+  let arr1 = left.sort(), arr2 = right.sort();
+  return arr1.length === arr2.length && arr1.every((v, i) => v === arr2[i])
+}
