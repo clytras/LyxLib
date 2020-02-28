@@ -34,3 +34,32 @@ export const resetPolyXY = points => {
   let prc = polyRect(points);
   return points.map(v => [v[0] - prc.x1, v[1] - prc.y1]);
 }
+
+export const mergeRects = (rects) => {
+  let x1, y1, x2, y2;
+
+  for(const r of rects) {
+    x1 = x1 !== undefined ? Math.min(x1, r.x1) : r.x1;
+    y1 = y1 !== undefined ? Math.min(y1, r.y1) : r.y1;
+    x2 = x2 !== undefined ? Math.max(x2, r.x2) : r.x2;
+    y2 = y2 !== undefined ? Math.max(y1, r.y2) : r.y2;
+  }
+
+  return { x1, y1, x2, y2 }
+}
+
+export const applyRectCalcs = (rect) => {
+  return {
+    ...rect,
+    ...rectCalcs(rect)
+  }
+}
+
+export const rectCalcs = ({ x1, y1, x2, y2 }) => {
+  return {
+    left: Math.min(x1, x2),
+    top: Math.min(y1, y2),
+    width: Math.max(x1, x2) - Math.min(x1, x2),
+    height: Math.max(y1, y2) - Math.min(y1, y2)
+  }
+}
