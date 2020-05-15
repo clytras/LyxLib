@@ -55,3 +55,10 @@ export function useRouter() {
 //     <button onClick={(e) => router.push('/about')}>About</button>
 //   );
 // }
+
+
+// A custom hook that builds on useLocation to parse
+// the query string
+export function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
