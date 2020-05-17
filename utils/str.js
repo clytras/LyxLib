@@ -98,3 +98,5 @@ export const format = (text, ...params) =>  {
 
   return formatted;
 }
+
+export const translateBool = str => /^\s*(true|yes|on)\s*$/i.test(str);
