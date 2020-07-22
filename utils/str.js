@@ -100,3 +100,9 @@ export const format = (text, ...params) =>  {
 }
 
 export const translateBool = str => /^\s*(true|yes|on)\s*$/i.test(str);
+
+export const quoteSingle = str => `'${str}'`;
+export const quoteDouble = str => `"${str}"`;
+export const quoteBacktick = str => `\`${str}\``;
+export const quoteRLSingle = str => `‘${str}’`;
+export const quoteRLDouble = str => `“${str}”`;
