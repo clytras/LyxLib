@@ -104,5 +104,23 @@ export const translateBool = str => /^\s*(true|yes|on)\s*$/i.test(str);
 export const quoteSingle = str => `'${str}'`;
 export const quoteDouble = str => `"${str}"`;
 export const quoteBacktick = str => `\`${str}\``;
-export const quoteRLSingle = str => `‘${str}’`;
-export const quoteRLDouble = str => `“${str}”`;
+export const quoteLRSingle = str => `‘${str}’`;
+export const quoteLRDouble = str => `“${str}”`;
+
+/**
+ * 
+ * @param {string} str - The string to be quoted
+ * @param {('single'|'double'|'backtick'|'lrsingle'|'lrdouble')} type - The type of the quotes to be used
+ */
+export function quote(str, type) {
+  switch (type) {
+    case 'single': return quoteSingle(str);
+    case 'double': return quoteDouble(str);
+    case 'backtick': return quoteBacktick(str);
+    case 'lrsingle': return quoteLRSingle(str);
+    case 'lrdouble': return quoteLRDouble(str);
+    default: return str;
+  }
+}
+
+export const quoteIf = (str, type) => str ? quote(str, type) : str;
