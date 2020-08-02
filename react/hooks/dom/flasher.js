@@ -8,10 +8,11 @@ export const useFlasher = () => {
       "style",
       "box-shadow: 0 0 2px 1px red; transition: box-shadow 100ms ease-out;"
     );
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       if (!ref.current) return;
       ref.current.setAttribute("style", "");
     }, 300);
+    return () => clearTimeout(timer);
   });
   return ref;
 };
