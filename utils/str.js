@@ -61,11 +61,15 @@ export const toTitleCase = (str, splitWith = /[\s]+/, joinWith = ' ') => {
     .join(joinWith);
 }
 
+export const toSentence = (str) => {
+  const result = str.replace(/[_-\s]+/g, ' ');
+  return result[0].toUpperCase() + result.substring(1).toLowerCase();
+}
+
 export const hasLocaleChars = (text, locale) => {
-  let result = false,
-    textChars = text.split('');
-  for(let charIndex in textChars)
-    if(result = chars[locale].indexOf(textChars[charIndex]) >= 0) break;
+  let result = false, textChars = text.split('');
+  for (let charIndex in textChars)
+    if (result = chars[locale].indexOf(textChars[charIndex]) >= 0) break;
   return result;
 }
 
@@ -88,12 +92,12 @@ export const toJsonIntended = (obj, spaces = 2) => JSON.stringify(obj, null, spa
 export const format = (text, ...params) =>  {
   var formatted = text;
   
-  if(params.length == 1 && typeof params[0] == 'object')
+  if (params.length == 1 && typeof params[0] == 'object')
     args = params[0];
   else
     args = params;
 
-  for(let key in args)
+  for (let key in args)
     formatted = formatted.replace(new RegExp('\\{' + key + '\\}', 'gi'), args[key]);
 
   return formatted;
