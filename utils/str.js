@@ -128,3 +128,15 @@ export function quote(str, type) {
 }
 
 export const quoteIf = (str, type) => str ? quote(str, type) : str;
+
+// https://stackoverflow.com/a/45789255/1889685
+export function numToSSColumn(num) {
+  let s = '', t;
+
+  while (num > 0) {
+    t = (num - 1) % 26;
+    s = String.fromCharCode(65 + t) + s;
+    num = (num - t) / 26 | 0;
+  }
+  return s || undefined;
+}
