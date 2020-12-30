@@ -40,15 +40,22 @@ export async function select(check, cases) {
 // > switchOf([1 > 0.1, 'one', 2 > 22, 'two'], 'default')
 // < "one"
 export function switchOf(flagCases, defaultValue) {
+  let useDefault = defaultValue;
+
+  if (flagCases.length & 1) {
+    // Always pop out last item if we have odd number of total cases
+    const inDefault = flagCases.pop();
+    if (useDefault === undefined) {
+      useDefault = inDefault;
+    }
+  }
+
   for (let i = 0; i < flagCases.length; i += 2) {
     const flag = flagCases[i];
     if (flag) {
       const useCase = flagCases[i + 1];
-      if (typeof(useCase) === 'function') {
-        return useCase();
-      }
-      return useCase;
+      return typeof(useCase) === 'function' ? useCase() : useCase;
     }
   }
-  return defaultValue;
+  return typeof(useDefault) === 'function' ? useDefault() : useDefault;
 }
