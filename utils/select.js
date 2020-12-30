@@ -43,7 +43,11 @@ export function switchOf(flagCases, defaultValue) {
   for (let i = 0; i < flagCases.length; i += 2) {
     const flag = flagCases[i];
     if (flag) {
-      return flagCases[i + 1];
+      const useCase = flagCases[i + 1];
+      if (typeof(useCase) === 'function') {
+        return useCase();
+      }
+      return useCase;
     }
   }
   return defaultValue;
