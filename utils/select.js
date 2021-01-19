@@ -39,6 +39,13 @@ export async function select(check, cases) {
 // ex.:
 // > switchOf([1 > 0.1, 'one', 2 > 22, 'two'], 'default')
 // < "one"
+// If total number of flagCases are an odd number,
+// always pop out last element and use it ad default value
+// only if second parameter defaultValue is undefined
+// ex.:
+// > switchOf([1 > 2, 'one', 2 > 2, 'two', 'Default!'])
+// < "Default!"
+
 export function switchOf(flagCases, defaultValue) {
   let useDefault = defaultValue;
 

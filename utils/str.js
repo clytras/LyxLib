@@ -73,11 +73,7 @@ export const hasLocaleChars = (text, locale) => {
   return result;
 }
 
-export const makeLines = ({
-  lines
-}, {
-  glue = "\n"
-} = {}) => lines.filter(l => l || l === '').join(glue);
+export const makeLines = ({ lines }, { glue = "\n" } = {}) => lines.filter(l => l || l === '').join(glue);
 
 export const nl2br = (str, is_xhtml = true) => str.replace(/\n/g, is_xhtml ? '<br/>' : '<br>');
 
