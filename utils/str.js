@@ -125,7 +125,10 @@ export function quote(str, type) {
 
 export const quoteIf = (str, type) => str ? quote(str, type) : str;
 
-// https://stackoverflow.com/a/45789255/1889685
+/**
+ * Convert number to alphabet string
+ * https://stackoverflow.com/a/45789255/1889685
+ */
 export function numToSSColumn(num) {
   let s = '', t;
 
@@ -135,4 +138,8 @@ export function numToSSColumn(num) {
     num = (num - t) / 26 | 0;
   }
   return s || undefined;
+}
+
+export function stringify(data, spaces = 2) {
+  return JSON.stringify(data, null, spaces);
 }

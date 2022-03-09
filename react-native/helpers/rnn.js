@@ -15,25 +15,25 @@ class DrawerHelper {
       right: false,
     };
 
-    Navigation.events().registerComponentDidAppearListener(({ componentId }) => {
-      if (componentId === _screenIds.Drawer) {
-        this.visibility.left = true;
-      }
+    // Navigation.events().registerComponentDidAppearListener(({ componentId }) => {
+    //   if (componentId === _screenIds.Drawer) {
+    //     this.visibility.left = true;
+    //   }
 
-      // if (componentId === RIGHT_SIDE_MENU_ID) {
-      //   this.visibility.right = true;
-      // }
-    });
+    //   // if (componentId === RIGHT_SIDE_MENU_ID) {
+    //   //   this.visibility.right = true;
+    //   // }
+    // });
 
-    Navigation.events().registerComponentDidDisappearListener(({ componentId }) => {
-      if (componentId === _screenIds.Drawer) {
-        this.visibility.left = false;
-      }
+    // Navigation.events().registerComponentDidDisappearListener(({ componentId }) => {
+    //   if (componentId === _screenIds.Drawer) {
+    //     this.visibility.left = false;
+    //   }
 
-      // if (componentId === RIGHT_SIDE_MENU_ID) {
-      //   this.visibility.right = false;
-      // }
-    });
+    //   // if (componentId === RIGHT_SIDE_MENU_ID) {
+    //   //   this.visibility.right = false;
+    //   // }
+    // });
   }
 
   /*getId(side) {
@@ -108,11 +108,11 @@ function push(componentId, routeKey, params, navOptions) {
         }
       }, navOptions)*/
       Object.assign({
-        /*statusBar: {
+        statusBar: {
           visible: true,
-          style: "dark",
-          backgroundColor: "green"
-        },*/
+          style: 'light',
+          backgroundColor: '#0d4777'
+        },
         topBar: {
           visible: false,
           animate: false,
